@@ -234,3 +234,17 @@ form button {
 #order-info strong {
   color: #fff;
 }
+#cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  min-width: 18px;
+  text-align: center;
+  display: none;
+  z-index: 10;
+}
