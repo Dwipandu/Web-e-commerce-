@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tokoku - Daftar Produk</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Tokoku</h1>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="https://img.icons8.com/?size=100&id=53382&format=png&color=A1A1A1" alt="beranda"style="height: 25px; width: 25px;">
+      </a>
+      <a href="cart.html"class="logo">
+        <img src="https://img.icons8.com/?size=100&id=2616&format=png&color=A1A1A1" alt="Keranjang"style="height: 25px; width: 25px;">
+      </a>
+      <a href="order.html">pesanan</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Daftar Buku</h2>
+    <section id="product-list" class="book-list"></section>
+  </main>
+
+  <script src="js/products.js"></script>
+  <script>
+    const productList = document.getElementById('product-list');
+
+    products.forEach(product => {
+      const productCard = document.createElement('article');
+      productCard.className = 'book';
+      productCard.innerHTML = `
+        <a href="product.html?id=${product.id}" class="book-link">
+          <img src="${product.image}" alt="${product.title}" />
+          <h2>${product.title}</h2>
+          <p>Rp ${product.price.toLocaleString('id-ID')}</p>
+        </a>
+        <button class="btn-add-cart" data-id="${product.id}">Tambah ke Keranjang</button>
+      `;
+      productList.appendChild(productCard);
+    });
+
+    // Event listener untuk tombol tambah ke keranjang
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('btn-add-cart') && e.target.tagName === 'BUTTON') {
+        const id = e.target.getAttribute('data-id');
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+        if (cart[id]) {
+          cart[id]++;
+        } else {
+          cart[id] = 1;
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Produk ditambahkan ke keranjang!');
+      }
+    });
+  </script>
+</body>
+</html>

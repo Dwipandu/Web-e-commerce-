@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tokoku - Keranjang</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Tokoku</h1>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="https://img.icons8.com/?size=100&id=53382&format=png&color=A1A1A1" alt="beranda" style="height: 25px; width: 25px;" />
+      </a>
+      <a href="cart.html" class="logo">
+        <img src="https://img.icons8.com/?size=100&id=2616&format=png&color=A1A1A1" alt="keranjang" style="height: 25px; width: 25px;" />
+      </a>
+      <a href="orders.html">pesanan</a> <!-- Tambahan tombol Pesanan -->
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h2>Keranjang</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>Produk</th>
+          <th>Harga</th>
+          <th>Jumlah</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Isi keranjang dengan JS -->
+      </tbody>
+    </table>
+
+    <!-- Tombol Bayar -->
+    <div style="text-align: right; margin-top: 1.5rem;">
+      <button onclick="handleCheckoutSuccess()" class="btn-add-cart">Bayar Sekarang</button>
+    </div>
+  </main>
+
+  <!-- Script -->
+  <script>
+    const products = [
+      { id: 1, title: 'Abi Cabul', price: 20000, image: 'https://i.supaimg.com/031524d0-a2de-4662-9228-b49eb38d1639.jpg' },
+      { id: 2, title: 'Kubil turu', price: 85000, image: 'https://i.supaimg.com/e5ab2de8-04c5-4b5d-9fdc-0492d3cf3410.jpg' },
+      { id: 3, title: 'juliet romuna', price: 950000, image: 'https://i.supaimg.com/1b147f6d-afd8-4915-b62d-608936491de5.jpg' },
+      { id: 4, title: 'daus stang saher', price: 120000, image: 'https://i.supaimg.com/b7a6bf7b-984e-4ef1-8041-fd2432979238.jpg' }
+    ];
+
+    // Load keranjang dari localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartTableBody = document.querySelector('#cart-table tbody');
+
+    // Render isi keranjang
+    Object.keys(cart).forEach(productId => {
+      const product = products.find(p => p.id == productId);
+      const quantity = cart[productId];
+      const total = product.price * quantity;
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${product.title}</td>
+        <td>Rp ${product.price.toLocaleString('id-ID')}</td>
+        <td>${quantity}</td>
+        <td>Rp ${total.toLocaleString('id-ID')}</td>
+      `;
+      cartTableBody.appendChild(row);
+    });
+
+<script>
+  // Tombol Bayar (redirect ke halaman checkout.html)
+  function handleCheckout() {
+    window.location.href = 'checkout.html'; // ke halaman checkout
+</script>
+  </script>
+</body>
+</html>
