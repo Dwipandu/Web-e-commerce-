@@ -1,17 +1,15 @@
-// js/cart.js
-
 // Ambil tombol tambah keranjang
 const buttons = document.querySelectorAll('.btn-add-cart');
 
 // Ambil data keranjang dari localStorage atau inisialisasi baru
 let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-// Fungsi simpan keranjang ke localStorage
+// Simpan cart ke localStorage
 function saveCart() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Fungsi tambah item ke keranjang
+// Tambah item ke keranjang
 function addToCart(id) {
   if (cart[id]) {
     cart[id]++;
@@ -22,7 +20,7 @@ function addToCart(id) {
   alert('Berhasil ditambahkan ke keranjang!');
 }
 
-// Pasang event click ke semua tombol tambah keranjang
+// Event klik ke tombol
 buttons.forEach(btn => {
   btn.addEventListener('click', () => {
     const id = btn.getAttribute('data-id');
