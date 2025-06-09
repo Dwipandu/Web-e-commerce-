@@ -1,1 +1,236 @@
+/* RESET dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Body */
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  background-color: #111;
+  color: #eee;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+nav a {
+  color: #ccc;
+  margin-left: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* Main content */
+main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Section judul */
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+/* Book List Grid */
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Book Card */
+.book {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 0 10px #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.6s ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.book img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.book h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.book p {
+  color: #aaa;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Link pembungkus produk */
+.book-link {
+  text-decoration: none;
+  color: inherit;
+  flex-grow: 1;
+}
+
+/* Button */
+button,
+.btn-add-cart {
+  background-color: #444;
+  color: #eee;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: auto;
+}
+
+button:hover,
+.btn-add-cart:hover {
+  background-color: #666;
+  transform: scale(1.05);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.order-card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px #000;
+}
+
+.order-card h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.order-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.order-card th, .order-card td {
+  border: 1px solid #333;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.order-card th {
+  background-color: #222;
+  color: #fff;
+}
+
+.order-card td {
+  background-color: #1a1a1a;
+}
+/* === Tambahan style untuk halaman Checkout dan Pesanan === */
+
+/* Form Checkout */
+form {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 0 10px #000;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #ccc;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #222;
+  color: #eee;
+  font-size: 1rem;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  background-color: #333;
+}
+
+form button {
+  width: 100%;
+}
+
+/* Pesanan Info Box */
+#order-info p {
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+  color: #ddd;
+}
+
+#order-info strong {
+  color: #fff;
+}
