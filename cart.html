@@ -7,17 +7,20 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
   <!-- Header -->
   <header>
     <h1>Tokoku</h1>
     <nav>
       <a href="index.html" class="logo">
-        <img src="https://img.icons8.com/?size=100&id=53382&format=png&color=A1A1A1" alt="beranda" style="height: 25px; width: 25px;" />
+        <img src="https://img.icons8.com/?size=100&id=53382&format=png&color=A1A1A1" alt="Beranda" style="height: 25px; width: 25px;">
       </a>
       <a href="cart.html" class="logo">
-        <img src="https://img.icons8.com/?size=100&id=2616&format=png&color=A1A1A1" alt="keranjang" style="height: 25px; width: 25px;" />
+        <img src="https://img.icons8.com/?size=100&id=2616&format=png&color=A1A1A1" alt="Keranjang" style="height: 25px; width: 25px;">
       </a>
-      <a href="orders.html">pesanan</a> <!-- Tambahan tombol Pesanan -->
+      <a href="orders.html" class="logo">
+        <img src="https://img.icons8.com/?size=100&id=12300&format=png&color=A1A1A1" alt="Pesanan" style="height: 25px; width: 25px;">
+      </a>
     </nav>
   </header>
 
@@ -34,13 +37,13 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Isi keranjang dengan JS -->
+        <!-- Isi keranjang akan dimasukkan dengan JS -->
       </tbody>
     </table>
 
     <!-- Tombol Bayar -->
     <div style="text-align: right; margin-top: 1.5rem;">
-      <button onclick="handleCheckoutSuccess()" class="btn-add-cart">Bayar Sekarang</button>
+      <button onclick="goToCheckout()" class="btn-add-cart">Bayar Sekarang</button>
     </div>
   </main>
 
@@ -53,11 +56,10 @@
       { id: 4, title: 'daus stang saher', price: 120000, image: 'https://i.supaimg.com/b7a6bf7b-984e-4ef1-8041-fd2432979238.jpg' }
     ];
 
-    // Load keranjang dari localStorage
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
     const cartTableBody = document.querySelector('#cart-table tbody');
 
-    // Render isi keranjang
+    // Tampilkan isi keranjang
     Object.keys(cart).forEach(productId => {
       const product = products.find(p => p.id == productId);
       const quantity = cart[productId];
@@ -73,11 +75,11 @@
       cartTableBody.appendChild(row);
     });
 
-<script>
-  // Tombol Bayar (redirect ke halaman checkout.html)
-  function handleCheckout() {
-    window.location.href = 'checkout.html'; // ke halaman checkout
-</script>
+    // Fungsi untuk pindah ke halaman checkout
+    function goToCheckout() {
+      window.location.href = 'checkout.html';
+    }
   </script>
+
 </body>
 </html>
